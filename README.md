@@ -20,8 +20,9 @@ Running multiple scripts with telegram reporting using the same bot could result
 ### Sending messages
 
 ```sh
-curl -d 'test' "127.0.0.1:9031/$chat_id?mode=Markdown"
-curl -d @message.txt "127.0.0.1:9031/$chat_id"
+curl --data-binary 'test' "127.0.0.1:9037/$chat_id?mode=Markdown"
+curl --data-binary $'multi\nline' "127.0.0.1:9037/$chat_id?mode=Markdown"
+curl --data-binary @message.txt "127.0.0.1:9037/$chat_id"
 ```
 
 Set ```chat_id``` to the number you got from your bot, with ```-``` if it was reported so (true for groups).
