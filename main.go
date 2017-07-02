@@ -140,7 +140,7 @@ func telegramBot(bot *tgbotapi.BotAPI) {
 	}
 
 	for update := range updates {
-		if len(*update.Message.NewChatMembers) > 0 {
+		if update.Message.NewChatMembers != nil && len(*update.Message.NewChatMembers) > 0 {
 			for _, member := range *update.Message.NewChatMembers {
 				if member.UserName == bot.Self.UserName && update.Message.Chat.Type == "group" {
 					introduce(update)
